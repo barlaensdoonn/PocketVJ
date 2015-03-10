@@ -1,6 +1,22 @@
 <?php
 
 
+if ($_GET['action'] == 'stopallplayers') {
+	exec("sudo /var/www/sync/stopallplayers.py");
+	$outputtext =  "all players stopped";
+}
+
+if ($_GET['action'] == 'startallplayers') {
+	exec("sudo /var/www/sync/omxkill.py");
+	system("sudo /var/www/sync/testscreenoff.py &");
+	exec("sudo /var/www/sync/startallplayers.py");
+	$outputtext =  "starting all players";
+}
+
+if ($_GET['action'] == 'shutdown') {
+	$outputtext =  "shutting down";
+	system("sudo /var/www/sync/shutdown.py");
+}
 
 if ($_GET['action'] == 'stop') {
 	$outputtext =  "player stopped";
@@ -158,7 +174,7 @@ if ($_GET['action'] == 'audiousb') {
 
 if ($_GET['action'] == 'reboot') {
 	$outputtext =  "rebooting now!";
-	system("sudo reboot");
+	system("sudo /var/www/sync/rebootall.py");
 }
 
 if ($_GET['action'] == 'eject') {
