@@ -1,3 +1,9 @@
+things to look into:
+- using host discovery in scripts to find n number of slaves on the network
+- file management for slaves from master controller
+- -o option for omxplayer-sync
+
+
 # PocketVJ Control Panel
 
 http://www.pocketvj.com
