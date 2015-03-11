@@ -1,3 +1,17 @@
 #!/bin/bash
+#shutdown all players
+
+#hosts
+SERVERS="192.168.0.11 192.168.0.12 192.168.0.13"
+
+# SSH User name
+USR="pi"
+
 exec > /dev/null 2>&1
-ssh pi@192.168.0.11 sudo shutdown -h now & ssh pi@192.168.0.12 sudo shutdown -h now & ssh pi@192.168.0.13 sudo shutdown -h now; sudo shutdown -h now
+
+for host in $SERVERS
+do
+ssh $USR@$host "sudo shutdown -h now";
+done
+
+sudo shutdown -h now

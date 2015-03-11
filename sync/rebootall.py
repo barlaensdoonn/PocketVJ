@@ -1,3 +1,17 @@
 #!/bin/bash
+#reboot all players
+
+#hosts
+SERVERS="192.168.0.11 192.168.0.12 192.168.0.13"
+
+# SSH User name
+USR="pi"
+
 exec > /dev/null 2>&1
-ssh pi@192.168.0.11 sudo reboot & ssh pi@192.168.0.12 sudo reboot & ssh pi@192.168.0.13 sudo reboot; sudo reboot
+
+for host in $SERVERS
+do
+ssh $USR@$host "sudo reboot";
+done
+
+sudo reboot
